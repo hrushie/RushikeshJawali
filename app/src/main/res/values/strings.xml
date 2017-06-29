@@ -8,12 +8,20 @@
     <string name="nav_item_home">Home</string>
     <string name="nav_item_friends">Friends</string>
     <string name="nav_item_notifications">Messages</string>
+    <string name="nav_item_about">Bio</string>
+    <string name="nav_item_academics">Academics</string>
+    <string name="nav_item_experience">Experience</string>
+    <string name="nav_item_accomplishment">Accomplishment</string>
+
 
     <!-- navigation drawer item labels  -->
     <string-array name="nav_drawer_labels">
-        <item>@string/nav_item_home</item>
-        <item>@string/nav_item_friends</item>
-        <item>@string/nav_item_notifications</item>
+
+        <item>@string/nav_item_about</item>
+        <item>@string/nav_item_academics</item>
+        <item>@string/nav_item_experience</item>
+        <item>@string/nav_item_accomplishment</item>
+
     </string-array>
 
     <string name="title_messages">Messages</string>

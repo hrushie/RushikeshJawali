@@ -1,5 +1,8 @@
 package com.hrushie.rushikeshjawali;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +13,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.webkit.WebView;
+import android.widget.ImageView;
+
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
 
     private Toolbar mToolbar;
+    Bundle bundle = new Bundle();
+    WebView webView;
     private FragmentDrawer drawerFragment;
 
     @Override
@@ -36,6 +48,68 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         // display the first navigation drawer view on app launch
         displayView(0);
+        FloatingActionButton.LayoutParams params = new FloatingActionButton.LayoutParams(150, 150);
+
+        ImageView icon = new ImageView(this); // Create an icon
+        icon.setLayoutParams(params);
+        icon.setImageResource(R.drawable.ic_facebook);
+        icon.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+                .setContentView(icon)
+                .setTheme(getResources().getColor(R.color.colorAccent))
+                .build();
+
+        ImageView icon1 = new ImageView(this); // Create an icon
+        icon1.setImageResource(R.drawable.insta);
+        ImageView icon2 = new ImageView(this); // Create an icon
+        icon2.setImageResource(R.drawable.face);
+        ImageView icon3 = new ImageView(this); // Create an icon
+        icon3.setImageResource(R.drawable.twitt);
+        ImageView icon4 = new ImageView(this); // Create an icon
+        icon4.setImageResource(R.drawable.linkdin);
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
+
+
+        itemBuilder.setLayoutParams(params);
+
+        SubActionButton buttonInsta = itemBuilder.setContentView(icon1).build();
+        SubActionButton buttonFacebook = itemBuilder.setContentView(icon2).build();
+        SubActionButton buttonTwitter = itemBuilder.setContentView(icon3).build();
+        SubActionButton buttonLinkedin = itemBuilder.setContentView(icon4).build();
+
+
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(buttonInsta)
+                .addSubActionView(buttonFacebook)
+                .addSubActionView(buttonTwitter)
+                .addSubActionView(buttonLinkedin)
+                .attachTo(actionButton)
+                .build();
+        buttonInsta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putString("edttext", "From Activity");
+                webView.loadUrl("www.instagram.com/hrushie");
+                webView.setVisibility(View.VISIBLE);
+            }
+        });
+        buttonFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/hrushie"));
+                startActivity(browserIntent);
+            }
+        });
+        buttonTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com/hrushie"));
+                startActivity(browserIntent);
+            }
+        });
+
     }
 
 
@@ -54,13 +128,11 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
-            return true;
-        }
 
-        if (id == R.id.action_search) {
-            Toast.makeText(getApplicationContext(), "Search action is selected!", Toast.LENGTH_SHORT).show();
-            return true;
+
+        if (id == R.id.action_github) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/hrushie"));
+            startActivity(browserIntent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -76,16 +148,16 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         String title = getString(R.string.app_name);
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
-                title = getString(R.string.title_home);
+                fragment = new AboutFragment();
+                title = "About me";
                 break;
             case 1:
                 fragment = new FriendsFragment();
-                title = getString(R.string.title_friends);
+                title = "Professional";
                 break;
             case 2:
                 fragment = new MessagesFragment();
-                title = getString(R.string.title_messages);
+                title = "Summery";
                 break;
             default:
                 break;

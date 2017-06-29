@@ -1,6 +1,8 @@
 package com.hrushie.rushikeshjawali;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,6 @@ import java.util.List;
 /**
  * Created by hrushie on 6/21/2017.
  */
-
 
 
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.MyViewHolder> {
@@ -43,6 +44,8 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public void onBindViewHolder(MyViewHolder holder, int position) {
         NavDrawerItem current = data.get(position);
         holder.title.setText(current.getTitle());
+        holder.title.setTypeface(null, Typeface.BOLD);
+        holder.title.setTextColor(Color.WHITE);
     }
 
     @Override
@@ -56,6 +59,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
+
         }
     }
 }

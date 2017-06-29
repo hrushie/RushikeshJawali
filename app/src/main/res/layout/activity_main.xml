@@ -22,11 +22,44 @@
                 layout="@layout/toolbar" />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/container_body"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/rushi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rushikesh Jawali"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Android Developer"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/container_body"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"></ScrollView>
+
+        </LinearLayout>
 
 
     </LinearLayout>
