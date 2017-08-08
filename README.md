@@ -6,7 +6,7 @@ Simple TicTacToe game created for [Prevail Health](https://prevailhealth.com/)
 
 This application is developed as a part of interview process and an coding exercise.
 
-![Weather App](/img1.png)  ![Weather App](/img2.png)
+![Weather App](/img1.png)                    ![Weather App](/img2.png)
 
 
 ### Installing
