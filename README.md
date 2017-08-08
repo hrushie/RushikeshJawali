@@ -1,6 +1,6 @@
-# Project Title
+# TicTacToe
 
-One Paragraph of project description goes here
+Simple TicTacToe game created for [Prevail Health](https://prevailhealth.com/)
 
 ## Getting Started
 
